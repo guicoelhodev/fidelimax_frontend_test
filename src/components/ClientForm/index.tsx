@@ -10,7 +10,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
   const { data } = useFormClientData({ initialData: formPreviousData})
 
   console.log('thats is the data', data);
-  return <div>
+  return <div className='text-red-500'>
     dsajhdsakjadshjk 
   </div>;
 }
