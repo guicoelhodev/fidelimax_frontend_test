@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render } from '@testing-library/react'
-import { ClientForm } from '..'
+import { ClientForm } from '.'
 import QueryProvider from '@/utils/QueryProvider'
 
 describe('Test ClientForm component', () => {

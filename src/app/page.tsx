@@ -1,5 +1,5 @@
 import { fidelimaxFormClientData } from '@/hooks/GET/useFormClientData'
-import { ClientForm } from './components/ClientForm';
+import { ClientForm } from '@/components/ClientForm';
 
 export default async function Home() {
   const data = await fidelimaxFormClientData();
