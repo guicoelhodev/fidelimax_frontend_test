@@ -1,14 +1,14 @@
 import { fetchWrapper } from '@/utils/fetchWrapper';
 import { useQuery } from '@tanstack/react-query';
 
-export interface Response {
+export type Response = {
   itens: QuestionResponse[];
   error: string;
   warning: string;
 }
 
 
-export interface QuestionResponse {
+export type QuestionResponse = {
   typeQuestion: number;
   answerValue?: number | string;
   mandatory: boolean;
@@ -17,12 +17,12 @@ export interface QuestionResponse {
   horizontal?: boolean;
 }
 
-export interface Iten {
+export type Iten = {
   value: number;
   description: string;
 };
 
-interface QueryParams {
+type QueryParams = {
   initialData: Response | null;
 };
 
