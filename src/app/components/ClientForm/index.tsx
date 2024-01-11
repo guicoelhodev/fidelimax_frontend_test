@@ -3,7 +3,7 @@
 import { Response, useFormClientData } from '@/service/http/GET/useFormClientData'
 
 type TClientForm = {
-  formPreviousData: Response
+  formPreviousData: Response | null
 }
 export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
 

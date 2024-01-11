@@ -23,7 +23,7 @@ export interface Iten {
 };
 
 interface QueryParams {
-  initialData: Response;
+  initialData: Response | null;
 };
 
 export const fidelimaxFormClientData = async () => {
