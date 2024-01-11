@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ClientForm } from '.'
 
 const meta = {
-  title: 'ClientForm',
+  title: '/components/ClientForm',
   component: ClientForm,
   tags: [
 'autodocs'
