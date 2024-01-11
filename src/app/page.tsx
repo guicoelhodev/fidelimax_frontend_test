@@ -1,4 +1,4 @@
-import { fidelimaxFormClientData } from '@/service/http/GET/useFormClientData'
+import { fidelimaxFormClientData } from '@/hooks/GET/useFormClientData'
 import { ClientForm } from './components/ClientForm';
 
 export default async function Home() {

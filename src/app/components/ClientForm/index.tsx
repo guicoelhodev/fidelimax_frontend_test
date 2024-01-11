@@ -1,6 +1,6 @@
 'use client';
 
-import { Response, useFormClientData } from '@/service/http/GET/useFormClientData'
+import { Response, useFormClientData } from '@/hooks/GET/useFormClientData'
 
 type TClientForm = {
   formPreviousData: Response | null
