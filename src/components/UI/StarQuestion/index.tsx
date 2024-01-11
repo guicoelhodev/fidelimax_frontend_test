@@ -24,6 +24,12 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
           />
         ))}
       </section>
+
+      <footer>{
+        !props.answerValue &&
+        <p>Escolha uma opção !!</p>
+        
+        }</footer>
     </div>
   );
 };
