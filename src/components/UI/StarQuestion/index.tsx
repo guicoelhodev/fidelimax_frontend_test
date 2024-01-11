@@ -1,23 +1,29 @@
 import React, { useState } from "react";
 import { StarSvg } from "./StarSvg";
+import { TClientQuestion } from "@/types/ClientForm";
 
-type TStarQuestion = {
-  handleStars: (currentStarNumber: number) => void;
-  currentStar: number;
-}
-export const StarQuestion: React.FC<TStarQuestion> = ({ handleStars, currentStar }) => {
-  const [activeStar, setActiveStar] = useState(currentStar);
+export const StarQuestion: React.FC<TClientQuestion> = ({
+  handleValue,
+  ...props
+}) => {
+  const [activeStar, setActiveStar] = useState(Number(props.answerValue) || 0);
 
   return (
-    <div className="flex gap-2 border border-red-500" onMouseLeave={() => handleStars(activeStar)}>
-      {Array.from({ length: 5 }, (_, index) => (
+    <div>
+      <p>{props.content}</p>
+      <section
+        className="flex gap-2 border border-red-500"
+        onMouseLeave={() => handleValue(activeStar)}
+      >
+        {Array.from({ length: 5 }, (_, index) => (
           <StarSvg
-            key={index + 'star'}
+            key={index + "star"}
             fill={index + 1 <= activeStar ? "#ffae00" : "#ACB1BA"}
             starNumber={index + 1}
             onMouseEnter={(starNumber) => setActiveStar(starNumber)}
           />
-      ))}
+        ))}
+      </section>
     </div>
   );
 };
