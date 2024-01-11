@@ -11,13 +11,12 @@ export const StarQuestion: React.FC<TStarQuestion> = ({ handleStars, currentStar
   return (
     <div className="flex gap-2 border border-red-500" onMouseLeave={() => handleStars(activeStar)}>
       {Array.from({ length: 5 }, (_, index) => (
-        <div key={index}>
           <StarSvg
+            key={index + 'star'}
             fill={index + 1 <= activeStar ? "#ffae00" : "#ACB1BA"}
             starNumber={index + 1}
             onMouseEnter={(starNumber) => setActiveStar(starNumber)}
           />
-        </div>
       ))}
     </div>
   );

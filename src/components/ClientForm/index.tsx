@@ -1,7 +1,7 @@
 'use client';
 
 import { Response, useFormClientData } from '@/hooks/GET/useFormClientData'
-import { StarQuestion } from '@/components/StarQuestion';
+import { StarQuestion } from '@/components/UI/StarQuestion';
 import { useState } from 'react';
 
 type TClientForm = {
