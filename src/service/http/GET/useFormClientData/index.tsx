@@ -1,4 +1,4 @@
-import { fidelimaxAPI } from '@/service/http';
+import { fetchWrapper } from '@/utils/fetchWrapper';
 import { useQuery } from '@tanstack/react-query';
 
 export interface Response {
@@ -28,8 +28,9 @@ interface QueryParams {
 
 export const fidelimaxFormClientData = async () => {
   try {
-    const response = await fidelimaxAPI.get<Response>('/front-test-survey.json');
-    return response.data;
+
+  const response = await fetchWrapper<Response>('https://fdlmx-backgrounds.sfo3.digitaloceanspaces.com/front-test/survey.json');
+  return response
   } catch (error) {
     throw new Error('Something went wrong, please try again later'); 
   }

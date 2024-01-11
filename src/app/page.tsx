@@ -1,13 +1,8 @@
 import { Response } from '@/service/http/GET/useFormClientData'
 import { ClientForm } from './components/ClientForm';
+import { fetchWrapper } from '@/utils/fetchWrapper';
 async function getData(): Promise<Response> {
-  const res = await fetch('https://fdlmx-backgrounds.sfo3.digitaloceanspaces.com/front-test/survey.json', { cache: 'force-cache'});
-  if(!res.ok) {
-    throw new Error('Failed to fetch data');
-  };
-
-  const data = await res.json();
-  return data;
+  return await fetchWrapper<Response>('https://fdlmx-backgrounds.sfo3.digitaloceanspaces.com/front-test/survey.json');
 }
 export default async function Home() {
   const data = await getData();

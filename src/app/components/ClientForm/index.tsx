@@ -7,10 +7,10 @@ type TClientForm = {
 }
 export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
 
-  const { data } = useFormClientData({ initialData: formPreviousData })
+  const { data } = useFormClientData({ initialData: formPreviousData})
 
   console.log('thats is the data', data);
   return <div>
-    dsajhdsakjadshjk
+    dsajhdsakjadshjk 
   </div>;
 }
