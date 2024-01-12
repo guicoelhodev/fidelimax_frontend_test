@@ -11,6 +11,7 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
   const isRequiredField = props.mandatory && !props.answerValue;
   return (
     <section className="flex flex-col gap-2">
+      <h3 className="text-xl font-bold">{`Pergunta ${props.typeQuestion}`}</h3>
       <p>{props.content}</p>
       <section
         className="flex gap-2"
