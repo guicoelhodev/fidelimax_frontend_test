@@ -8,12 +8,14 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
 }) => {
   const [activeStar, setActiveStar] = useState(Number(props.answerValue) || 0);
 
+  const isRequiredField = props.mandatory && !props.answerValue;
   return (
-    <div>
+    <section className="flex flex-col gap-2 p-4">
       <p>{props.content}</p>
       <section
         className="flex gap-2 border border-red-500"
         onMouseLeave={() => handleValue(activeStar)}
+        role="starQuestion-role"
       >
         {Array.from({ length: 5 }, (_, index) => (
           <StarSvg
@@ -25,11 +27,7 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
         ))}
       </section>
 
-      <footer>{
-        !props.answerValue &&
-        <p>Escolha uma opção !!</p>
-        
-        }</footer>
-    </div>
+      <footer>{isRequiredField && <p role='error-message' className="text-red-500 text-sm">Escolha uma opção</p>}</footer>
+    </section>
   );
 };
