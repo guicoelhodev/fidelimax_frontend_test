@@ -10,19 +10,12 @@ type TClientForm = {
 
 export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
   // const { data } = useFormClientData({ initialData: formPreviousData });
-  const [activeStar, setActiveStar] = useState(0);
+  const [activeStar, setActiveStar] = useState(formPreviousData?.itens[0].answerValue);
 
-  // console.log(activeStar)
-  // console.log('thats is the data', data);
   if (!formPreviousData) return <p>Carregando...</p>;
 
-  const a = {
-    0: StarQuestion
-  };
-
-
   return (
-    <div className="text-red-500 flex flex-col items-start">
+    <div className="flex flex-col items-start">
 
       {
         formPreviousData.itens.map(question => {
@@ -38,7 +31,6 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
             )
           }
         })
-
       }
     </div>
   );
