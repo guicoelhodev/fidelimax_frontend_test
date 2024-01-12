@@ -15,6 +15,7 @@ export const TextQuestion: React.FC<TClientQuestion> = (props) => {
       <textarea
         onChange={(textContent) => props.handleValue(textContent.target.value)}
         className="border border-gray-secondary p-2 resize-none rounded-lg text-gray-primary"
+        value={props.answerValue}
       >
         {props.answerValue}
       </textarea>
