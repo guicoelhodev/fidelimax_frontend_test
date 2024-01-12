@@ -10,10 +10,10 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
 
   const isRequiredField = props.mandatory && !props.answerValue;
   return (
-    <section className="flex flex-col gap-2 p-4">
+    <section className="flex flex-col gap-2">
       <p>{props.content}</p>
       <section
-        className="flex gap-2 border border-red-500"
+        className="flex gap-2"
         onMouseLeave={() => handleValue(activeStar)}
         role="starQuestion-role"
       >
@@ -27,7 +27,7 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
         ))}
       </section>
 
-      <footer>{isRequiredField && <p role='error-message' className="text-red-500 text-sm">Escolha uma opção</p>}</footer>
+      <footer>{isRequiredField && <p role='error-message' className="text-red-500 text-sm">Avalie essa questão</p>}</footer>
     </section>
   );
 };
