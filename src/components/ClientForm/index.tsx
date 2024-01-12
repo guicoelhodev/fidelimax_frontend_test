@@ -40,8 +40,6 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
     })    
   };
 
-  console.log(formValues)
-
   return (
     <div className="max-w-xl m-auto flex flex-col gap-2 items-start p-4 border border-red-200">
 
