@@ -4,6 +4,7 @@ import { QuestionResponse, Response } from "@/hooks/GET/useFormClientData";
 import { StarQuestion } from "@/components/UI/StarQuestion";
 import { useCallback, useState } from "react";
 import { RadioGroupQuestion } from "../UI/RadioGroupQuestion";
+import { TextQuestion } from "../UI/TextQuestion";
 
 type TClientForm = {
   formPreviousData: Response | null;
@@ -42,7 +43,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
   console.log(formValues)
 
   return (
-    <div className="max-w-xl m-auto flex flex-col items-start p-4 border border-red-200">
+    <div className="max-w-xl m-auto flex flex-col gap-2 items-start p-4 border border-red-200">
 
       {Object.values(formValues).map((question) => {
         if (question.typeQuestion === 1) {
@@ -66,8 +67,13 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
             />
           );
         }
-      }
-      )}
+
+        if(question.typeQuestion === 3) {
+          return (
+            <TextQuestion {...question} key={question.content} handleValue={(value) => handleFormValues(question.typeQuestion, value)} />
+          )
+        }
+      })}
     </div>
   );
 };

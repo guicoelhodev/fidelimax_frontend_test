@@ -13,7 +13,7 @@ export const RadioGroupQuestion: React.FC<TRadioGroupQuestion> = (props) => {
       <h3 className="text-xl font-bold">{`Pergunta ${props.typeQuestion}`}</h3>
       <p>{props.content}</p>
 
-      <fieldset className="flex justify-between gap-2 ">
+      <fieldset className={`flex gap-4 ${props.typeQuestion === 2 ? 'justify-between' : ''}`}>
         {props.typeQuestion === 5
           ? props.itens?.map((radioOption, index) => (
               <div key={`radio_${index}`} className="flex gap-2">
