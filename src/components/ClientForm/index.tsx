@@ -1,37 +1,73 @@
 "use client";
 
-import { Response, useFormClientData } from "@/hooks/GET/useFormClientData";
+import { QuestionResponse, Response } from "@/hooks/GET/useFormClientData";
 import { StarQuestion } from "@/components/UI/StarQuestion";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { RadioGroupQuestion } from "../UI/RadioGroupQuestion";
 
 type TClientForm = {
   formPreviousData: Response | null;
 };
 
-export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
-  // const { data } = useFormClientData({ initialData: formPreviousData });
-  const [activeStar, setActiveStar] = useState(formPreviousData?.itens[0].answerValue);
+type TQuestionTypes = 1 | 2 | 3 | 4 | 5 | 6;
+type TFormValues = Record<TQuestionTypes, QuestionResponse>;
 
-  if (!formPreviousData) return <p>Carregando...</p>;
+export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
+  const getDefaultFormValues: () => TFormValues = useCallback(() => {
+    let tmpValues = {} as TFormValues;
+
+    formPreviousData?.itens.forEach((question) => {
+      tmpValues[question.typeQuestion as keyof typeof tmpValues] = question;
+    });
+    return tmpValues;
+  }, [ formPreviousData?.itens ]);
+
+  const [formValues, setFormValues] = useState<TFormValues>(getDefaultFormValues());
+
+
+  const handleFormValues = (key: number, value: string | number) => {
+
+    const currentKeyValues = formValues[key as TQuestionTypes];
+    setFormValues((prevValues) => {
+      return {
+        ...prevValues,
+        [key]: {
+          ...currentKeyValues,
+          answerValue: value,
+        },
+      };  
+    })    
+  };
+
+  console.log(formValues)
 
   return (
     <div className="flex flex-col items-start">
 
-      {
-        formPreviousData.itens.map(question => {
+      {Object.values(formValues).map((question) => {
+        if (question.typeQuestion === 1) {
+          return (
+            <StarQuestion
+              {...question}
+              key={question.content}
+              answerValue={question.answerValue}
+              handleValue={(star) => handleFormValues(question.typeQuestion, star)}
+            />
+          );
+        }
 
-          if(question.typeQuestion === 1) {
-            return (
-              <StarQuestion
-                {...question}
-                key={question.content}
-                answerValue={activeStar}
-                handleValue={(star) => setActiveStar(Number(star))}
-              />
-            )
-          }
-        })
+        if (question.typeQuestion === 2 || question.typeQuestion === 5) {
+          return (
+            <RadioGroupQuestion
+              {...question}
+              key={question.typeQuestion}
+              handleValue={(value) => handleFormValues(question.typeQuestion, value)}
+              answerValue={question.answerValue}
+            />
+          );
+        }
       }
+      )}
     </div>
   );
 };
