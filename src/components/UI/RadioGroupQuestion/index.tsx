@@ -9,18 +9,21 @@ export const RadioGroupQuestion: React.FC<TRadioGroupQuestion> = (props) => {
   const isRequiredField = props.mandatory && Number(props.answerValue) === 0;
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4 w-full">
       <h3 className="text-xl font-bold">{`Pergunta ${props.typeQuestion}`}</h3>
       <p>{props.content}</p>
 
-      <fieldset className="flex justify-between gap-2 w-full">
+      <fieldset className="flex justify-between gap-2 ">
         {props.typeQuestion === 5
           ? props.itens?.map((radioOption, index) => (
-              <div key={`radio_${index}`}>
+              <div key={`radio_${index}`} className="flex gap-2">
                 <input
+                className="w-6 h-6 cursor-pointer"
                   type="radio"
                   id={radioOption.description}
                   value={radioOption.value}
+                  checked={index + 1 === props.answerValue}
+                  onChange={() => props.handleValue(index + 1)}
                 />
                 <label htmlFor={radioOption.description}>
                   {radioOption.description}

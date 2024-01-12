@@ -20,7 +20,6 @@ const Wrapper: FC<TClientQuestion> = (props) => {
   );
 };
 
-describe("RadioGroupQuestion test component", () => {
   describe("when component  has typeQuestion equal 2", () => {
     it("Should render correctly", () => {
       const screen = render(<Wrapper {...mockContent} />);
@@ -62,5 +61,4 @@ describe("RadioGroupQuestion test component", () => {
 
       expect(radio5.checked).toBe(true);
     });
-  });
 });
