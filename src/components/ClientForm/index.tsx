@@ -6,21 +6,21 @@ import { useCallback, useState } from "react";
 import { RadioGroupQuestion } from "../UI/RadioGroupQuestion";
 import { TextQuestion } from "../UI/TextQuestion";
 import { SelectQuestion } from "../UI/SelectQuestion";
+import { MultipleChoiceQuestion } from "../UI/MultipleChoiceQuestion";
+import { AcceptedValues } from "@/types/ClientForm";
 
 type TClientForm = {
   formPreviousData: Response | null;
 };
 
-type TQuestionTypes = 1 | 2 | 3 | 4 | 5 | 6;
-
-type TFormValues = Map<TQuestionTypes, QuestionResponse>;
+type TFormValues = Map<number, QuestionResponse>;
 
 export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
   const getDefaultFormValues: () => TFormValues = useCallback(() => {
     let tmpValues = new Map() as TFormValues;
 
     formPreviousData?.itens.forEach((question, index) => {
-      tmpValues.set((index + 1) as TQuestionTypes, question);
+      tmpValues.set(index + 1, question);
     });
     return tmpValues;
   }, []);
@@ -29,25 +29,24 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
     getDefaultFormValues()
   );
 
-  const handleFormValues = (key: number, value: string | number | string[]) => {
+  const handleFormValues = (key: number, value: AcceptedValues) => {
     const formKeyUpdated = {
-      ...formValues.get(key as TQuestionTypes)!,
+      ...formValues.get(key)!,
       answerValue: value,
     } as QuestionResponse;
 
-    let formUpdated = new Map(formValues).set(
-      key as TQuestionTypes,
-      formKeyUpdated
-    );
+    let formUpdated = new Map(formValues).set(key, formKeyUpdated);
 
     return setFormValues(formUpdated);
   };
 
-  // console.log(Array.from(formValues.values()));
+  const formValuesArr = Array.from(formValues.values());
+
+  console.log(formValues.get(6));
 
   return (
-    <div className="max-w-xl m-auto flex flex-col gap-2 items-start p-4 border border-red-200">
-      {Array.from(formValues.values()).map((question, index) => {
+    <div className="max-w-xl m-auto flex flex-col gap-4 items-start p-4 border border-red-200">
+      {formValuesArr.map((question, index) => {
         if (question.typeQuestion === 1) {
           return (
             <StarQuestion
@@ -55,9 +54,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
               {...question}
               key={question.content}
               answerValue={question.answerValue}
-              handleValue={(star) =>
-                handleFormValues(question.typeQuestion, star)
-              }
+              handleValue={(star) => handleFormValues(index + 1, star)}
             />
           );
         }
@@ -68,9 +65,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
               questionNumber={index + 1}
               {...question}
               key={question.typeQuestion}
-              handleValue={(value) =>
-                handleFormValues(question.typeQuestion, value)
-              }
+              handleValue={(value) => handleFormValues(index + 1, value)}
               answerValue={question.answerValue}
             />
           );
@@ -82,9 +77,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
               questionNumber={index + 1}
               {...question}
               key={question.content}
-              handleValue={(value) =>
-                handleFormValues(question.typeQuestion, value)
-              }
+              handleValue={(value) => handleFormValues(index + 1, value)}
             />
           );
         }
@@ -95,9 +88,19 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
               questionNumber={index + 1}
               {...question}
               key={question.content}
-              handleValue={(value) =>
-                handleFormValues(question.typeQuestion, value)
-              }
+              handleValue={(value) => handleFormValues(index + 1, value)}
+            />
+          );
+        }
+
+        if (question.typeQuestion === 6) {
+          return (
+            <MultipleChoiceQuestion
+              questionNumber={index + 1}
+              {...question}
+              key={question.content}
+              handleValue={(value) => handleFormValues(index + 1, value)}
+              answerValue={question.answerValue as unknown as string[]}
             />
           );
         }

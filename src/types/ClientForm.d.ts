@@ -1,8 +1,10 @@
 import { QuestionResponse } from "@/hooks/GET/useFormClientData";
 
+type AcceptedValues = string | number | string[] | number[];
+
 export type TClientQuestion = {
-  handleValue: (value: string | number) => void;
-  answerValue?: string | number | string[];
+  handleValue: (value: AcceptedValues) => void;
+  answerValue?: AcceptedValues;
 } & QuestionResponse;
 
 export type TQuestionComponent = TClientQuestion & {
