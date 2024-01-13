@@ -1,7 +1,10 @@
 import { AcceptedValues, TQuestionComponent } from "@/types/ClientForm";
 import { FC } from "react";
 
-type TMultipleChoiceQuestion = Omit<TQuestionComponent, "answerValue"> & {
+export type TMultipleChoiceQuestion = Omit<
+  TQuestionComponent,
+  "answerValue"
+> & {
   answerValue: unknown[]; // should be number[] or string[]
 };
 export const MultipleChoiceQuestion: FC<TMultipleChoiceQuestion> = ({
@@ -44,6 +47,7 @@ export const MultipleChoiceQuestion: FC<TMultipleChoiceQuestion> = ({
                     option.value
                   )
                 }
+                aria-checked={answerValue.includes(option.value)}
               >
                 {option.description}
               </button>
@@ -63,6 +67,7 @@ export const MultipleChoiceQuestion: FC<TMultipleChoiceQuestion> = ({
                   onChange={(e) =>
                     handleAnswerContent(e.target.checked, option.value)
                   }
+                  aria-checked={answerValue.includes(option.value)}
                 />
 
                 <label htmlFor={`checkbox-${option.value}`}>
