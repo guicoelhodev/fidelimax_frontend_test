@@ -108,7 +108,7 @@ export const Page: FC<TPage> = ({ children }) => {
             </div>
           )}
         </header>
-        <main className="w-full h-full p-4">{children}</main>
+        <main className="w-full max-w-7xl mx-auto h-full p-4">{children}</main>
       </section>
     </div>
   );
