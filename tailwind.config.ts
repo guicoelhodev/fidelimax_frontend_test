@@ -16,6 +16,9 @@ const config: Config = {
       colors: {
         "gray-primary": "#737A86",
         "gray-secondary": "#ACB1BA",
+        "gray-terciary": "#CCD0D6",
+        "gray-quaternary": "#333E4f",
+        "blue-dark": "#19202D",
       },
       keyframes: {
         fadeIn: {
