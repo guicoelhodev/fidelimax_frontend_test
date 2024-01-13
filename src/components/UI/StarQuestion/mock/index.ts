@@ -1,7 +1,7 @@
 import { TQuestionComponent } from "@/types/ClientForm";
 
 export const mockContent: TQuestionComponent = {
-  content: "Some text",
+  content: "Text mockado para documentação",
   typeQuestion: 1,
   handleValue: () => {},
   answerValue: 0,

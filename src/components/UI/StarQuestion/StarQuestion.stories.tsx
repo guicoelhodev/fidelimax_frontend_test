@@ -1,24 +1,31 @@
+import { TQuestionComponent } from "@/types/ClientForm";
 import { StarQuestion } from ".";
 import { Meta, StoryObj } from "@storybook/react";
+import { FC } from "react";
+import { mockContent } from "./mock";
+
+type TWrapper = TQuestionComponent & {
+  docText: string;
+};
+
+const Wrapper: FC<TWrapper> = (props) => {
+  return (
+    <section className="flex flex-col gap-4 max-w-xl">
+      <p className="text-blue-600">{props.docText}</p>
+      <StarQuestion {...props} />
+    </section>
+  );
+};
 
 const meta = {
   title: "UI/components/StarQuestion",
-  component: StarQuestion,
+  component: Wrapper,
   tags: ["autodocs"],
-  args: {
-    content: "Texto que será renderizado nessa pergunta",
-    answerValue: 3,
-    handleValue: (value) => console.log("O valor da resposta é:", value),
-    horizontal: true,
-    itens: [],
-    mandatory: true,
-    typeQuestion: 1,
-    questionNumber: 22,
-  },
+  args: mockContent,
   parameters: {
     layout: "centered",
   },
-} satisfies Meta<typeof StarQuestion>;
+} satisfies Meta<typeof Wrapper>;
 
 export default meta;
 
@@ -28,27 +35,15 @@ export const Primary: TStory = {
   name: "Default case",
   args: {
     answerValue: 2,
+    docText: "Nesse exemplo, reproduz o comportamento padrão do componente",
   },
-  render: (args) => (
-    <section className="flex flex-col gap-4">
-      <p className="text-blue-600">
-        Nesse exemplo, reproduz o comportamento padrão do componente
-      </p>
-      <StarQuestion {...args} />
-    </section>
-  ),
 };
 
 export const Secondary: TStory = {
   name: "Error case",
-  render: (args) => (
-    <section className="max-w-lg flex flex-col gap-4">
-      <p className="text-blue-600">
-        Nesse exemplo de uso, deverá retornar uma mensagem de erro caso a chave
-        mandatory estiver true e o valor da resposta for igual a zero
-      </p>
-
-      <StarQuestion {...args} answerValue={0} mandatory />
-    </section>
-  ),
+  args: {
+    answerValue: 0,
+    docText: "Nesse exemplo, reproduz o comportamento de erro do componente",
+    mandatory: true,
+  },
 };

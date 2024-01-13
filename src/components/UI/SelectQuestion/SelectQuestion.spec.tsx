@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { SelectQuestion } from ".";
-import { TClientQuestion } from "@/types/ClientForm";
+import { AcceptedValues, TClientQuestion } from "@/types/ClientForm";
 import { useState } from "react";
 import { fireEvent, render, waitFor } from "@testing-library/react";
 import { mockContent } from "./mock/content";
@@ -10,9 +10,10 @@ const Wrapper = (props: TClientQuestion) => {
 
   return (
     <SelectQuestion
+      questionNumber={5}
       {...props}
-      handleValue={(value) => setSelectedValue(value)}
-      answerValue={selectedValue}
+      handleValue={(value) => setSelectedValue(value as string)}
+      answerValue={selectedValue as string}
     />
   );
 };

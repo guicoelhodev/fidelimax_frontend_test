@@ -11,8 +11,9 @@ const Wrapper: FC<TClientQuestion> = (props) => {
   return (
     <TextQuestion
       {...props}
-      handleValue={(value) => setText(value)}
+      handleValue={(value) => setText(value as string)}
       answerValue={text}
+      questionNumber={4}
     />
   );
 };
