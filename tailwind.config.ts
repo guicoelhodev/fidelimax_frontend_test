@@ -17,6 +17,15 @@ const config: Config = {
         "gray-primary": "#737A86",
         "gray-secondary": "#ACB1BA",
       },
+      keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
+      animation: {
+        fadeIn: "fadeIn 200ms ease-in-out",
+      },
     },
   },
   plugins: [],
