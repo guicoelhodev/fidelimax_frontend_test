@@ -1,12 +1,11 @@
-import { fetchWrapper } from '@/utils/fetchWrapper';
-import { useQuery } from '@tanstack/react-query';
+import { fetchWrapper } from "@/utils/fetchWrapper";
+import { useQuery } from "@tanstack/react-query";
 
 export type Response = {
   itens: QuestionResponse[];
   error: string;
   warning: string;
-}
-
+};
 
 export type QuestionResponse = {
   typeQuestion: number;
@@ -15,7 +14,7 @@ export type QuestionResponse = {
   content: string;
   itens?: Iten[];
   horizontal?: boolean;
-}
+};
 
 export type Iten = {
   value: number;
@@ -28,18 +27,19 @@ type QueryParams = {
 
 export const fidelimaxFormClientData = async () => {
   try {
-
-  const response = await fetchWrapper<Response>('https://fdlmx-backgrounds.sfo3.digitaloceanspaces.com/front-test/survey.json');
-  return response
+    const response = await fetchWrapper<Response>(
+      "https://fdlmx-backgrounds.sfo3.digitaloceanspaces.com/front-test/survey.json"
+    );
+    return response;
   } catch (error) {
-    throw new Error('Something went wrong, please try again later'); 
+    throw new Error("Something went wrong, please try again later");
   }
 };
 
 export const useFormClientData = (props: QueryParams) => {
   return useQuery({
-    queryKey: ['GET_formClientData'],
+    queryKey: ["GET_formClientData"],
     queryFn: fidelimaxFormClientData,
-    initialData: props.initialData
+    initialData: props.initialData,
   });
-}
+};
