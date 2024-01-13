@@ -19,15 +19,21 @@ const config: Config = {
         "gray-terciary": "#CCD0D6",
         "gray-quaternary": "#333E4f",
         "blue-dark": "#19202D",
+        whitesmoke: "#F2F4F8",
       },
       keyframes: {
         fadeIn: {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        slideLeft: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0)" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 200ms ease-in-out",
+        slideLeft: "slideLeft 200ms ease-in-out",
       },
     },
   },
