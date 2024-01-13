@@ -4,7 +4,7 @@ export const mockContent: TQuestionComponent = {
   content: "Texto mockado de exemplo",
   typeQuestion: 2,
   handleValue: () => {},
-  answerValue: 0,
+  answerValue: 8,
   mandatory: false,
   horizontal: true,
   itens: [],
