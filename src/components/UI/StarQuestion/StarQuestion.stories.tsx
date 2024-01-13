@@ -13,10 +13,11 @@ const meta = {
     itens: [],
     mandatory: true,
     typeQuestion: 1,
+    questionNumber: 22,
   },
   parameters: {
-    layout: 'centered'
-  }
+    layout: "centered",
+  },
 } satisfies Meta<typeof StarQuestion>;
 
 export default meta;
@@ -24,7 +25,7 @@ export default meta;
 type TStory = StoryObj<typeof meta>;
 
 export const Primary: TStory = {
-  name: 'Default case',
+  name: "Default case",
   args: {
     answerValue: 2,
   },
@@ -33,7 +34,7 @@ export const Primary: TStory = {
       <p className="text-blue-600">
         Nesse exemplo, reproduz o comportamento padrão do componente
       </p>
-      <StarQuestion {...args}  />
+      <StarQuestion {...args} />
     </section>
   ),
 };
@@ -43,7 +44,8 @@ export const Secondary: TStory = {
   render: (args) => (
     <section className="max-w-lg flex flex-col gap-4">
       <p className="text-blue-600">
-        Nesse exemplo de uso, deverá retornar uma mensagem de erro caso a chave mandatory estiver true e o valor da resposta for igual a zero
+        Nesse exemplo de uso, deverá retornar uma mensagem de erro caso a chave
+        mandatory estiver true e o valor da resposta for igual a zero
       </p>
 
       <StarQuestion {...args} answerValue={0} mandatory />

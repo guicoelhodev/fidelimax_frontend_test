@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
-import { TClientQuestion } from "@/types/ClientForm";
+import { TClientQuestion, TQuestionComponent } from "@/types/ClientForm";
 import { FaChevronDown } from "react-icons/fa";
-export const SelectQuestion: FC<TClientQuestion> = (props) => {
+export const SelectQuestion: FC<TQuestionComponent> = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const getBorderRadiusByOrder = (index: number) => {
@@ -13,7 +13,7 @@ export const SelectQuestion: FC<TClientQuestion> = (props) => {
 
   return (
     <section className="w-full flex flex-col gap-2 relative">
-      <h3 className="text-xl font-bold">{`Pergunta ${props.typeQuestion}`}</h3>
+      <h3 className="text-xl font-bold">{`Pergunta ${props.questionNumber}`}</h3>
 
       <button
         className="border border-gray-secondary text-gray-primary p-4 rounded-lg flex justify-between items-center cursor-pointer"

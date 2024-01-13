@@ -1,6 +1,6 @@
-import { TClientQuestion } from "@/types/ClientForm";
+import { TQuestionComponent } from "@/types/ClientForm";
 
-export const mockContent: TClientQuestion = {
+export const mockContent: TQuestionComponent = {
   content: "Texto mockado de exemplo",
   typeQuestion: 4,
   handleValue: () => {},
@@ -12,4 +12,5 @@ export const mockContent: TClientQuestion = {
     { value: 2, description: "Opção 2" },
     { value: 3, description: "Opção 3" },
   ],
+  questionNumber: 3,
 };

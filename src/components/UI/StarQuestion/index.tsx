@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { StarSvg } from "./StarSvg";
-import { TClientQuestion } from "@/types/ClientForm";
+import { TQuestionComponent } from "@/types/ClientForm";
 
-export const StarQuestion: React.FC<TClientQuestion> = ({
+export const StarQuestion: React.FC<TQuestionComponent> = ({
   handleValue,
   ...props
 }) => {
@@ -11,7 +11,7 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
   const isRequiredField = props.mandatory && !props.answerValue;
   return (
     <section className="flex flex-col gap-2">
-      <h3 className="text-xl font-bold">{`Pergunta ${props.typeQuestion}`}</h3>
+      <h3 className="text-xl font-bold">{`Pergunta ${props.questionNumber}`}</h3>
       <p>{props.content}</p>
       <section
         className="flex gap-2"
@@ -28,7 +28,13 @@ export const StarQuestion: React.FC<TClientQuestion> = ({
         ))}
       </section>
 
-      <footer>{isRequiredField && <p role='error-message' className="text-red-500 text-sm">Avalie essa questão</p>}</footer>
+      <footer>
+        {isRequiredField && (
+          <p role="error-message" className="text-red-500 text-sm">
+            Avalie essa questão
+          </p>
+        )}
+      </footer>
     </section>
   );
 };

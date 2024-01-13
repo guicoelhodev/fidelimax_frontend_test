@@ -19,8 +19,8 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
   const getDefaultFormValues: () => TFormValues = useCallback(() => {
     let tmpValues = new Map() as TFormValues;
 
-    formPreviousData?.itens.forEach((question) => {
-      tmpValues.set(question.typeQuestion as TQuestionTypes, question);
+    formPreviousData?.itens.forEach((question, index) => {
+      tmpValues.set((index + 1) as TQuestionTypes, question);
     });
     return tmpValues;
   }, []);
@@ -47,10 +47,11 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
 
   return (
     <div className="max-w-xl m-auto flex flex-col gap-2 items-start p-4 border border-red-200">
-      {Array.from(formValues.values()).map((question) => {
+      {Array.from(formValues.values()).map((question, index) => {
         if (question.typeQuestion === 1) {
           return (
             <StarQuestion
+              questionNumber={index + 1}
               {...question}
               key={question.content}
               answerValue={question.answerValue}
@@ -64,6 +65,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
         if (question.typeQuestion === 2 || question.typeQuestion === 5) {
           return (
             <RadioGroupQuestion
+              questionNumber={index + 1}
               {...question}
               key={question.typeQuestion}
               handleValue={(value) =>
@@ -77,6 +79,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
         if (question.typeQuestion === 3) {
           return (
             <TextQuestion
+              questionNumber={index + 1}
               {...question}
               key={question.content}
               handleValue={(value) =>
@@ -89,6 +92,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
         if (question.typeQuestion === 4) {
           return (
             <SelectQuestion
+              questionNumber={index + 1}
               {...question}
               key={question.content}
               handleValue={(value) =>
