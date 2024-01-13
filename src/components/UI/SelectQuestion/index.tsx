@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { TClientQuestion } from "@/types/ClientForm";
 import { FaChevronDown } from "react-icons/fa";
 export const SelectQuestion: FC<TClientQuestion> = (props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const getBorderRadiusByOrder = (index: number) => {
     if (!props.itens) return "";
@@ -20,13 +20,16 @@ export const SelectQuestion: FC<TClientQuestion> = (props) => {
         onClick={() => setIsOpen(!isOpen)}
         data-testid="selectQuestion"
       >
-        <p>{props.answerValue || props.content}</p>
+        <p data-testid="selectResult">{props.answerValue || props.content}</p>
 
         <FaChevronDown width={24} height={24} color="#333e4f" />
       </button>
 
       {isOpen && (
-        <div className="w-full bg-white absolute -bottom-44 rounded-lg flex flex-col border-gray-secondary border text-gray-primary animate-fadeIn">
+        <div
+          className="w-full bg-white absolute -bottom-44 rounded-lg flex flex-col border-gray-secondary border text-gray-primary animate-fadeIn"
+          data-testid="selectList"
+        >
           {props.itens?.map((item, index) => (
             <button
               key={index + "item"}
@@ -34,7 +37,7 @@ export const SelectQuestion: FC<TClientQuestion> = (props) => {
                 index
               )}`}
               onClick={() => {
-                props.handleValue(item.value);
+                props.handleValue(item.description);
                 return setIsOpen(!isOpen);
               }}
               data-testid={`selectOption-${index + 1}`}

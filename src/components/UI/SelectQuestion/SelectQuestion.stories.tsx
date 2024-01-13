@@ -1,19 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { SelectQuestion } from ".";
-import { TClientQuestion } from "@/types/ClientForm";
+import { mockContent } from "./mock/content";
 
 type TMeta = Meta<typeof SelectQuestion>;
 type TStory = StoryObj<TMeta>;
-
-const mockContent: TClientQuestion = {
-  content: "Texto mockado de exemplo",
-  typeQuestion: 4,
-  handleValue: () => {},
-  answerValue: "",
-  mandatory: false,
-  horizontal: true,
-  itens: [],
-};
 
 const meta = {
   title: "UI/components/SelectQuestion",

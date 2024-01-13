@@ -3,8 +3,8 @@ import { TextQuestion } from ".";
 import { mockContent } from "./mock/contentMock";
 import { TClientQuestion } from "@/types/ClientForm";
 import { FC, useState } from "react";
+import userEvent from "@testing-library/user-event";
 import { render, waitFor } from "@testing-library/react";
-import { userEvent } from "@storybook/test";
 
 const Wrapper: FC<TClientQuestion> = (props) => {
   const [text, setText] = useState(props.answerValue);
