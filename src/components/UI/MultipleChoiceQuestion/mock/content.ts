@@ -1,11 +1,11 @@
-import { TQuestionComponent } from "@/types/ClientForm";
+import { TMultipleChoiceQuestion } from "..";
 
-export const mockContent: TQuestionComponent = {
+export const mockContent: TMultipleChoiceQuestion = {
   content: "Texto mockado de exemplo",
   handleValue: () => {},
   mandatory: true,
   questionNumber: 53,
-  answerValue: undefined,
+  answerValue: [],
   typeQuestion: 6,
   horizontal: true,
   itens: [
