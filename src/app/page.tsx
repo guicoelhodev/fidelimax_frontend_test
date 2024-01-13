@@ -1,13 +1,16 @@
-import { fidelimaxFormClientData } from '@/hooks/GET/useFormClientData'
-import { ClientForm } from '@/components/ClientForm';
+import { fidelimaxFormClientData } from "@/hooks/GET/useFormClientData";
+import { Page } from "@/components/UI/Page";
+import { ClientForm } from "@/components/ClientForm";
 
 export default async function Home() {
   const data = await fidelimaxFormClientData();
 
+  {
+    /* <ClientForm formPreviousData={data} /> */
+  }
   return (
-    <main>
-      <h1 className='text-3xl text-blue-600'>Hello world</h1>
+    <Page>
       <ClientForm formPreviousData={data} />
-    </main>
-  )
+    </Page>
+  );
 }

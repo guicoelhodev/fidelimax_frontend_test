@@ -45,7 +45,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
   console.log(formValues.get(6));
 
   return (
-    <div className="max-w-xl m-auto flex flex-col gap-4 items-start p-4 border border-red-200">
+    <div className="max-w-xl m-auto flex flex-col gap-4 items-start p-4 border  bg-white rounded-2xl">
       {formValuesArr.map((question, index) => {
         if (question.typeQuestion === 1) {
           return (
