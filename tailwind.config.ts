@@ -20,6 +20,7 @@ const config: Config = {
         "gray-quaternary": "#333E4f",
         "blue-dark": "#19202D",
         whitesmoke: "#F2F4F8",
+        "orange-primary": "#FFB800",
       },
       keyframes: {
         fadeIn: {
