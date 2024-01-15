@@ -44,7 +44,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
 
   const formValuesArr = Array.from(formValues.values());
 
-  console.log(formValues.get(6));
+  // console.log(formValues.get(6));
 
   return (
     <section className="max-w-4xl mx-auto flex flex-col items-center gap-4">
@@ -115,7 +115,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
         </Button>
       </div>
 
-      <Footer formValues={formValues} />
+      <Footer formValues={formValuesArr} />
     </section>
   );
 };
