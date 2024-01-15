@@ -14,15 +14,15 @@ export const RadioGroupQuestion: React.FC<TRadioGroupQuestion> = (props) => {
       <p>{props.content}</p>
 
       <fieldset
-        className={`flex gap-4 ${
+        className={`flex gap-2 ${
           props.typeQuestion === 2 ? "justify-between" : ""
-        }`}
+        } sm:gap-4`}
       >
         {props.typeQuestion === 5
           ? props.itens?.map((radioOption, index) => (
-              <div key={`radio_${index}`} className="flex gap-2">
+              <div key={`radio_${index}`} className="flex gap-2 items-center">
                 <input
-                  className="w-6 h-6 cursor-pointer"
+                  className="w-4 h-4 cursor-pointer sm:w-6 sm:h-6"
                   type="radio"
                   id={radioOption.description}
                   value={radioOption.value}
@@ -47,7 +47,7 @@ export const RadioGroupQuestion: React.FC<TRadioGroupQuestion> = (props) => {
                   type="radio"
                   id={`radio_${index + 1}`}
                   value={index + 1}
-                  className="w-6 h-6 cursor-pointer"
+                  className="w-4 h-4 cursor-pointer sm:w-6 sm:h-6"
                   checked={index + 1 === props.answerValue}
                   onChange={() => props.handleValue(index + 1)}
                 />

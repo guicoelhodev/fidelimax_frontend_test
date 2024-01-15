@@ -33,7 +33,9 @@ export const MultipleChoiceQuestion: FC<TMultipleChoiceQuestion> = ({
       <h3 className="text-xl font-bold">{`Pergunta ${props.questionNumber}`}</h3>
       <p>{props.content}</p>
 
-      <section className={`flex gap-4 ${props.horizontal ? "" : "flex-col"}`}>
+      <section
+        className={`flex gap-4 flex-wrap ${props.horizontal ? "" : "flex-col"}`}
+      >
         {props.horizontal
           ? props.itens?.map((option) => (
               <button

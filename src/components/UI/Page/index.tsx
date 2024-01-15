@@ -47,6 +47,7 @@ export const Page: FC<TPage> = ({ children }) => {
             <button onClick={() => handlePageActions("menu")}>
               <HiOutlineMenuAlt1 className="w-6 h-6" color="#fff" />
             </button>
+
             <Image
               src={YourLogo}
               alt="Logo que representa a indentidade visual da empresa"
@@ -59,11 +60,11 @@ export const Page: FC<TPage> = ({ children }) => {
               className=" text-white flex items-center gap-4"
               onClick={() => handlePageActions("userMenu")}
             >
-              <div className="bg-gray-quaternary w-10 h-10 rounded-full grid place-items-center">
+              <div className="grid bg-gray-quaternary w-10 h-10 rounded-full place-items-center">
                 {fakeUser.name[0]}
               </div>
 
-              <p>{fakeUser.name}</p>
+              <p className="hidden sm:block">{fakeUser.name}</p>
 
               <FaChevronDown className="w-6 h-6" />
             </article>

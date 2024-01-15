@@ -14,7 +14,7 @@ type TFooter = {
 export const Footer: FC<TFooter> = ({ formValues }) => {
   const { mutateAsync: sendClientForm } = useSendClientForm();
 
-  const [requestModal, setRequestModal] = useState(true);
+  const [requestModal, setRequestModal] = useState(false);
   const [requestMessage, setRequestMessage] = useState({
     error: "",
     warning: "",
@@ -33,22 +33,23 @@ export const Footer: FC<TFooter> = ({ formValues }) => {
   };
 
   return (
-    <footer className="w-full flex gap-4">
+    <footer className="w-full flex gap-4 flex-wrap flex-row-reverse sm:flex-row">
+      <div className="flex gap-4 justify-center  w-full sm:w-auto">
+        <Button
+          className="bg-red-600 px-8 w-full sm:w-auto"
+          onClick={async () => fetchModalMessage("error")}
+        >
+          Enviar erro
+        </Button>
+        <Button
+          className="bg-green-500 px-8 w-full sm:w-auto"
+          onClick={async () => fetchModalMessage("success")}
+        >
+          Enviar sucesso
+        </Button>
+      </div>
       <Button
-        className="bg-red-600 px-8"
-        onClick={async () => fetchModalMessage("error")}
-      >
-        Enviar erro
-      </Button>
-      <Button
-        className="bg-green-500 px-8"
-        onClick={async () => fetchModalMessage("success")}
-      >
-        Enviar sucesso
-      </Button>
-
-      <Button
-        className="bg-orange-primary text-blue-dark ml-auto"
+        className="bg-orange-primary text-blue-dark ml-auto w-full sm:w-auto"
         onClick={() => sendClientForm(formValues)}
       >
         Enviar fake post
