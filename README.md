@@ -23,7 +23,7 @@
 
 <div align='center'>
   <p>If you want to see the website, 
-    <a href='https://pokedex-v3.vercel.app/' target='_blank'>click here</a>
+    <a href='https://fidelimax-frontend-test.vercel.app/' target='_blank'>click here</a>
   </p>
 </div>
 
@@ -43,7 +43,7 @@ After that, download the project and run the following command to download the d
 
 `npm install && npm run dev`
 
-<p>If you just want to view the project, click <a href=''>here</a></p>
+<p>If you just want to view the project,<a href='https://fidelimax-frontend-test.vercel.app/'>click here</a></p>
 
 <h2 id='storybook'>Load docs using storybook and run unit tests</h2>
 
