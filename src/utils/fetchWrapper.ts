@@ -1,4 +1,4 @@
-export async function fetchWFideliMax<T>(url: string, cache?: RequestCache) {
+export async function fetchFideliMax<T>(url: string, cache?: RequestCache) {
   const response = await fetch(`${process.env.FIDELIXMAX_API}${url}`, {
     cache: cache || "no-cache",
   });
