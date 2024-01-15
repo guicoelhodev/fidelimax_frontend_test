@@ -25,7 +25,7 @@ export const ClientForm: React.FC<TClientForm> = ({ formPreviousData }) => {
       tmpValues.set(index + 1, question);
     });
     return tmpValues;
-  }, []);
+  }, [formPreviousData?.itens]);
 
   const [formValues, setFormValues] = useState<TFormValues>(
     getDefaultFormValues()

@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { mockContent } from "./mock/contentMock";
-import { TClientQuestion, TQuestionComponent } from "@/types/ClientForm";
+import { TQuestionComponent } from "@/types/ClientForm";
 import { TextQuestion } from ".";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ const Wrapper = (props: TQuestionComponent) => {
   return (
     <TextQuestion
       {...props}
-      handleValue={(value) => setText(value)}
+      handleValue={(value) => setText(value as string)}
       answerValue={text}
     />
   );

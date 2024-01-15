@@ -73,6 +73,7 @@ export const Page: FC<TPage> = ({ children }) => {
               <aside className="absolute -bottom-28 w-full bg-white border border-blue-dark text-blue-dark font-normal rounded-lg animate-fadeIn">
                 {userActions.map((action, index) => (
                   <button
+                    key={action.name}
                     className={`flex items-center gap-2 w-full p-2  ${
                       index === 1 ? "rounded-b-lg" : "rounded-t-lg"
                     } hover:bg-whitesmoke transition-colors duration-300`}
@@ -97,6 +98,7 @@ export const Page: FC<TPage> = ({ children }) => {
                 </button>
                 {fakePages.map((page) => (
                   <button
+                    key={page.link}
                     className="w-full text-left p-4 rounded-lg text-white hover:bg-whitesmoke hover:text-blue-dark transition-colors duration-300"
                     onClick={() =>
                       alert(`Simulando clique para a página: ${page.name}`)
